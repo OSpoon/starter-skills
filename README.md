@@ -4,6 +4,10 @@
 
 _description_
 
+## Initialize
+
+After creating a repository from this template, run `pnpm run init` to set its project metadata.
+
 ## Install
 
 ```sh

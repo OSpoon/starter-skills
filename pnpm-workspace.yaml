@@ -29,6 +29,7 @@ catalogs:
     skills: ^1.7.2
   cli:
     '@antfu/eslint-config': ^9.5.1
+    '@clack/prompts': ^1.8.1
     bumpp: ^12.3.0
     changelogen: ^0.6.2
     eslint: ^10.11.0

@@ -32,6 +32,7 @@
     "lint": "eslint --cache",
     "release": "bumpp",
     "version": "changelogen --output CHANGELOG.md",
+    "init": "tsx scripts/init.ts",
     "start": "tsx src/cli.ts",
     "test": "pnpm run build && vitest",
     "typecheck": "tsc",
@@ -41,6 +42,7 @@
   "scripts-info": {
     "build": "Bundle the skill's TypeScript example",
     "dev": "Rebuild on change during development",
+    "init": "Initialize project metadata",
     "knip": "Find unused files, exports and dependencies",
     "lint": "Check for code style issues",
     "release": "Build, generate a changelog, bump the skill version, commit and tag",
@@ -55,6 +57,7 @@
     "@antfu/eslint-config": "catalog:cli",
     "@antfu/skills": "catalog:agentic",
     "@antfu/utils": "catalog:inlined",
+    "@clack/prompts": "catalog:cli",
     "@types/node": "catalog:types",
     "bumpp": "catalog:cli",
     "changelogen": "catalog:cli",
