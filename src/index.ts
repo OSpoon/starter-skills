@@ -1,2 +1,3 @@
-export const one = 1
-export const two = 2
+export function format(items: readonly string[]): string {
+  return items.map(item => `- ${item}`).join('\n')
+}

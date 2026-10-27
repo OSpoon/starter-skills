@@ -3,6 +3,7 @@
     "target": "ESNext",
     "lib": ["ESNext"],
     "module": "Preserve",
+    "allowImportingTsExtensions": true,
     "strict": true,
     "strictNullChecks": true,
     "noEmit": true,
