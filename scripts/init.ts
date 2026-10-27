@@ -1,7 +1,8 @@
 import { mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import { basename, join } from 'node:path'
 import process from 'node:process'
-import { cancel, group, intro, outro, text } from '@clack/prompts'
+import { cancel, group, intro, log, outro, tasks, text } from '@clack/prompts'
+import pc from 'picocolors'
 
 interface PackageJson {
   name: string
@@ -23,6 +24,19 @@ function parseGitHubRepository(value: string) {
   catch {
     return undefined
   }
+}
+
+function showLogo() {
+  const lines = [
+    '╭────────────────────╮',
+    '│  STARTER SKILLS    │',
+    '╰────────────────────╯',
+  ]
+  console.log()
+  lines.forEach((line, index) => {
+    const styledLine = index === 1 ? pc.bold(pc.cyan(line)) : pc.dim(line)
+    console.log(pc.isColorSupported ? styledLine : line)
+  })
 }
 
 const root = process.cwd()
@@ -47,7 +61,11 @@ const initialRepository = previousName === 'pkg-placeholder'
   ? `https://github.com/${currentRepositoryInfo?.owner ?? 'owner'}/${initialName.split('/').at(-1)}`
   : currentRepository
 
-intro('Initialize project metadata')
+if (process.stdout.isTTY && !process.env.CI)
+  showLogo()
+
+intro(pc.bgCyan(pc.black(' starter-skills ')))
+log.info(`${pc.dim('Current project:')} ${pkg.name}`)
 const answers = await group({
   name: () => text({
     message: 'Package name',
@@ -126,22 +144,50 @@ const updates = [
 const backups: Array<{ path: string, backup?: string }> = []
 let keepTemporaryDirectory = false
 
+async function updateFile(update: typeof updates[number], index: number) {
+  const [path] = update
+  const backup = join(temporaryDirectory, `${index}.bak`)
+  try {
+    await rename(path, backup)
+    backups.push({ path, backup })
+  }
+  catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT')
+      throw error
+    backups.push({ path })
+  }
+  await rename(join(temporaryDirectory, `${index}.new`), path)
+}
+
 try {
   for (const [index, [, content]] of updates.entries())
     await writeFile(join(temporaryDirectory, `${index}.new`), content)
-  for (const [index, [path]] of updates.entries()) {
-    const backup = join(temporaryDirectory, `${index}.bak`)
-    try {
-      await rename(path, backup)
-      backups.push({ path, backup })
-    }
-    catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== 'ENOENT')
-        throw error
-      backups.push({ path })
-    }
-    await rename(join(temporaryDirectory, `${index}.new`), path)
-  }
+  log.info(`${pc.dim('Project:')} ${pc.bold(name)} · ${repositoryPath}`)
+  await tasks([
+    {
+      title: 'Package metadata',
+      task: async () => {
+        await updateFile(updates[0], 0)
+        return 'Updated package.json'
+      },
+    },
+    {
+      title: 'Project documentation',
+      task: async () => {
+        await updateFile(updates[1], 1)
+        await updateFile(updates[2], 2)
+        await updateFile(updates[3], 3)
+        return 'Updated README, contributing guide, and license'
+      },
+    },
+    {
+      title: 'GitHub funding',
+      task: async () => {
+        await updateFile(updates[4], 4)
+        return 'Updated funding details'
+      },
+    },
+  ])
 }
 catch (error) {
   const rollbackErrors: unknown[] = []
@@ -166,4 +212,4 @@ finally {
     await rm(temporaryDirectory, { recursive: true, force: true })
 }
 
-outro(`${name} is ready`)
+outro(`${pc.green(name)} is ready`)
