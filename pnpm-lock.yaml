@@ -192,6 +192,9 @@ catalogs:
     knip:
       specifier: ^6.38.0
       version: 6.41.0
+    mri:
+      specifier: ^1.2.0
+      version: 1.2.0
     nano-staged:
       specifier: ^1.0.2
       version: 1.0.2
@@ -260,6 +263,9 @@ importers:
       knip:
         specifier: catalog:cli
         version: 6.41.0
+      mri:
+        specifier: catalog:cli
+        version: 1.2.0
       nano-staged:
         specifier: catalog:cli
         version: 1.0.2

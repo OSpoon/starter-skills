@@ -1,23 +1,23 @@
 {
-  "name": "starter-skills",
+  "name": "pkg-placeholder",
   "type": "module",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@12.8.1",
-  "description": "A TypeScript library and skill repository for AI agents",
+  "description": "_description_",
   "author": {
     "name": "OSpoon",
     "url": "https://github.com/OSpoon"
   },
   "license": "MIT",
   "funding": "https://github.com/sponsors/OSpoon",
-  "homepage": "https://github.com/OSpoon/starter-skills#readme",
+  "homepage": "https://github.com/OSpoon/pkg-placeholder#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OSpoon/starter-skills.git"
+    "url": "git+https://github.com/OSpoon/pkg-placeholder.git"
   },
   "bugs": {
-    "url": "https://github.com/OSpoon/starter-skills/issues"
+    "url": "https://github.com/OSpoon/pkg-placeholder/issues"
   },
   "keywords": [
     "agent-skills",
@@ -39,7 +39,7 @@
     "prepare": "git config core.hooksPath .githooks && simple-git-hooks && skills experimental_sync -y"
   },
   "scripts-info": {
-    "build": "Bundle the TypeScript skill script",
+    "build": "Bundle the skill's TypeScript example",
     "dev": "Rebuild on change during development",
     "knip": "Find unused files, exports and dependencies",
     "lint": "Check for code style issues",
@@ -62,6 +62,7 @@
     "eslint-plugin-slop": "catalog:cli",
     "eslint-plugin-sonarjs": "catalog:cli",
     "knip": "catalog:cli",
+    "mri": "catalog:cli",
     "nano-staged": "catalog:cli",
     "simple-git-hooks": "catalog:cli",
     "skills": "catalog:agentic",

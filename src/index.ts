@@ -1,3 +1,3 @@
-export function format(items: readonly string[]): string {
-  return items.map(item => `- ${item}`).join('\n')
+export function ping(_input = 'ping'): string {
+  return 'pong'
 }

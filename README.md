@@ -1,35 +1,24 @@
-# starter-skills
+# pkg-placeholder
 
 [![License][license-src]][license-href]
 
-`hello-world` is an agent skill that creates a short Markdown greeting list.
+_description_
 
 ## Install
 
 ```sh
-npx skills add OSpoon/starter-skills --skill hello-world
+npx skills add repo/pkg-placeholder --skill <skill-name>
 ```
 
-This installs the version on the repository's default branch.
+## Features
 
-## What it does
-
-- Creates one greeting for each name as a Markdown bullet list.
-- Uses `world` when no name is provided.
-- Supports requested languages and tones using the included greeting guidance.
-
-For example, given `Ada` and `Lin`, it returns:
-
-```md
-- Hello, Ada!
-- Hello, Lin!
-```
+_features_
 
 ## License
 
-[MIT](./LICENSE.md) [OSpoon](https://github.com/OSpoon)
+[MIT](./LICENSE.md) License © [OSpoon](https://github.com/OSpoon)
 
 <!-- Badges -->
 
-[license-src]: https://img.shields.io/github/license/OSpoon/starter-skills.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/OSpoon/starter-skills/blob/main/LICENSE.md
+[license-src]: https://img.shields.io/github/license/OSpoon/pkg-placeholder.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/OSpoon/pkg-placeholder/blob/main/LICENSE.md

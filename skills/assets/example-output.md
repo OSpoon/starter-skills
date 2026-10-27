@@ -1,2 +1,1 @@
-- Hello, Ada!
-- Hello, Lin!
+pong
