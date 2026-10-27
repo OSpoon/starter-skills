@@ -26,19 +26,6 @@ function parseGitHubRepository(value: string) {
   }
 }
 
-function showLogo() {
-  const lines = [
-    '╭────────────────────╮',
-    '│  STARTER SKILLS    │',
-    '╰────────────────────╯',
-  ]
-  console.log()
-  lines.forEach((line, index) => {
-    const styledLine = index === 1 ? pc.bold(pc.cyan(line)) : pc.dim(line)
-    console.log(pc.isColorSupported ? styledLine : line)
-  })
-}
-
 const root = process.cwd()
 const packagePath = join(root, 'package.json')
 const pkg = JSON.parse(await readFile(packagePath, 'utf8')) as PackageJson
@@ -60,9 +47,6 @@ const initialGithubUsername = currentGithubUsername ?? currentRepositoryInfo?.ow
 const initialRepository = previousName === 'pkg-placeholder'
   ? `https://github.com/${currentRepositoryInfo?.owner ?? 'owner'}/${initialName.split('/').at(-1)}`
   : currentRepository
-
-if (process.stdout.isTTY && !process.env.CI)
-  showLogo()
 
 intro(pc.bgCyan(pc.black(' starter-skills ')))
 log.info(`${pc.dim('Current project:')} ${pkg.name}`)
