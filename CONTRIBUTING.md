@@ -2,6 +2,17 @@
 
 Use this repository's GitHub issues and pull requests to discuss contributions.
 
+## Agent Skills documentation
+
+This repository follows the [Agent Skills format](https://agentskills.io/). Read the [official documentation](https://agentskills.io/) for the full guide set.
+
+- [Quickstart](https://agentskills.io/skill-creation/quickstart)
+- [Format specification](https://agentskills.io/specification)
+- [Best practices for skill creators](https://agentskills.io/skill-creation/best-practices)
+- [Optimizing skill descriptions](https://agentskills.io/skill-creation/optimizing-descriptions)
+- [Using scripts in skills](https://agentskills.io/skill-creation/using-scripts)
+- [Evaluating skill output quality](https://agentskills.io/skill-creation/evaluating-skills)
+
 ## Skill versioning and release
 
 The version in the root `package.json` is the source of truth for the single skill's releases. The package remains private and is not published to npm.
@@ -27,5 +38,5 @@ npx skills add repo/pkg-placeholder --skill <skill-name>
 Pin a released version by using its tag in the GitHub tree URL:
 
 ```sh
-npx skills add https://github.com/repo/pkg-placeholder/tree/v0.1.0/skills
+npx skills add https://github.com/repo/pkg-placeholder/tree/v0.1.0/skills/ping
 ```

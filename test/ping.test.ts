@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
 function run(...args: string[]) {
-  return spawnSync(process.execPath, [fileURLToPath(new URL('../skills/scripts/index.mjs', import.meta.url)), ...args], { encoding: 'utf8' })
+  return spawnSync(process.execPath, [fileURLToPath(new URL('../skills/ping/scripts/index.mjs', import.meta.url)), ...args], { encoding: 'utf8' })
 }
 
 describe('bundled ping script', () => {
