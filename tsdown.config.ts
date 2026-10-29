@@ -9,6 +9,7 @@ if (!skill || extraSkills.length)
   throw new Error('Expected exactly one skill under skills/.')
 
 /* Multi-skill variant: src/<name>/cli.ts -> skills/<name>/scripts/index.mjs.
+Keep knip.json entries aligned; custom entries replace defaults.
 const names = readdirSync('skills').filter(name =>
   existsSync(join('skills', name, 'SKILL.md')) && existsSync(join('src', name, 'cli.ts')),
 )
